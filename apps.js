@@ -10,7 +10,7 @@ var hoursOpen = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 p
 
  
 
-// Creating a function to produce a random number between two values
+// function to produce a random number between two values
 function getRandom(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
@@ -53,11 +53,6 @@ render: function() {
 }
 
 };
-
-// var shops = [seattle];
-// for(var i = 0; i < shops.length; i++){
-//     shops[i].render();
-// }
 
 console.log(seattle.cookiesPerHour);
 
