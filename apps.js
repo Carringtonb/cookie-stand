@@ -90,12 +90,115 @@ render: function() {
     for(var i = 0; i < hoursOpen.length; i++){
         var myLi = document.createElement('li');
         myLi.textContent = hoursOpen[i] + ':' + this.cookiesPerHour[i] + ' cookies.';
-        myUl.appendChild(myLi);
+        myUL.appendChild(myLi);
     }
 }
 
 }
-var shops = [seattle, tokyo];
+
+var dubai = {
+    location: 'Dubai',
+    minimumGuests: 11,
+    maximumGuests: 38,
+    avgCookies: 3.7,
+    cookiesPerHour: [],
+    customersPerHour: [],
+    totalPerDay: 0,
+
+avgCustomerPerHour: function(){
+    for(var i = 0; i < hoursOpen.length; i++){
+    this.customersPerHour.push(getRandom(this.minimumGuests, this.maximumGuests));
+    }
+},
+
+avgCookiesPerHour: function(){
+this.avgCustomerPerHour();
+for(var i = 0; i < hoursOpen.length; i++){
+    var oneHour = Math.ceil(this.customersPerHour[i] * this.avgCookies);
+    this.cookiesPerHour.push(oneHour);
+}
+},
+render: function() {
+    this.avgCookiesPerHour();
+    var myUL = document.getElementById('Dubai');
+    for(var i = 0; i < hoursOpen.length; i++){
+        var myLi = document.createElement('li');
+        myLi.textContent = hoursOpen[i] + ':' + this.cookiesPerHour[i] + ' cookies.';
+        myUL.appendChild(myLi);
+    }
+}
+
+}
+
+var paris = {
+    location: 'Paris',
+    minimumGuests: 20,
+    maximumGuests: 38,
+    avgCookies: 2.3,
+    cookiesPerHour: [],
+    customersPerHour: [],
+    totalPerDay: 0,
+
+avgCustomerPerHour: function(){
+    for(var i = 0; i < hoursOpen.length; i++){
+    this.customersPerHour.push(getRandom(this.minimumGuests, this.maximumGuests));
+    }
+},
+
+avgCookiesPerHour: function(){
+this.avgCustomerPerHour();
+for(var i = 0; i < hoursOpen.length; i++){
+    var oneHour = Math.ceil(this.customersPerHour[i] * this.avgCookies);
+    this.cookiesPerHour.push(oneHour);
+}
+},
+render: function() {
+    this.avgCookiesPerHour();
+    var myUL = document.getElementById('Paris');
+    for(var i = 0; i < hoursOpen.length; i++){
+        var myLi = document.createElement('li');
+        myLi.textContent = hoursOpen[i] + ':' + this.cookiesPerHour[i] + ' cookies.';
+        myUL.appendChild(myLi);
+    }
+}
+
+}
+
+var lima = {
+    location: 'Lima',
+    minimumGuests: 2,
+    maximumGuests: 16,
+    avgCookies: 4.6,
+    cookiesPerHour: [],
+    customersPerHour: [],
+    totalPerDay: 0,
+
+avgCustomerPerHour: function(){
+    for(var i = 0; i < hoursOpen.length; i++){
+    this.customersPerHour.push(getRandom(this.minimumGuests, this.maximumGuests));
+    }
+},
+
+avgCookiesPerHour: function(){
+this.avgCustomerPerHour();
+for(var i = 0; i < hoursOpen.length; i++){
+    var oneHour = Math.ceil(this.customersPerHour[i] * this.avgCookies);
+    this.cookiesPerHour.push(oneHour);
+}
+},
+render: function() {
+    this.avgCookiesPerHour();
+    var myUL = document.getElementById('Lima');
+    for(var i = 0; i < hoursOpen.length; i++){
+        var myLi = document.createElement('li');
+        myLi.textContent = hoursOpen[i] + ':' + this.cookiesPerHour[i] + ' cookies.';
+        myUL.appendChild(myLi);
+    }
+}
+
+}
+
+var shops = [seattle, tokyo, dubai, paris, lima];
 for(var i = 0; i < shops.length; i++){
     shops[i].render();
 }
