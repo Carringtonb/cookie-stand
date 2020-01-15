@@ -221,7 +221,7 @@ function Location(name, minCustomers, maxCustomers, averageCookies){
     this.totalCookies = 0;
     this.randomCustomers = [];
     this.cookiesSoldEachHour = [];
-    this.range = maxCustomers - minCustomers + 1;
+    //this.range = maxCustomers - minCustomers + 1;
 };
     
 
@@ -234,22 +234,30 @@ Location.prototype.getRandomCustomer = function(min, max){
 
 Location.prototype.getCookiesPerHour = function(){
     for(var i = 0; i < hoursOpen.length; i++){
-        var cookiesEachHour = this.randomCustomers * this.averageCookies;
+        var cookiesEachHour = Math.ceil(this.randomCustomers * this.averageCookies);
         this.cookiesSoldEachHour.push(cookiesEachHour);
+    }
+}
+Location.prototype.calculateTotalCookies = function(){
+    for(var i = 0; i < cookiesSoldEachHour.length; i++){
+        this.totalCookies += this.cookiesSoldEachHour[i];
     }
 }
 
 Location.prototype.render = function(){
-    this.averageCookies();
-    
+    this.getRandomCustomer();
+    this.getCookiesPerHour();
+    this.calculateTotalCookies();
+
 }
+
 var citySeattle = new Location('Seattle,', 23, 65, 6.3);
 var cityTokyo = new Location('Tokyo', 3, 24, 1.2);
 var cityDubai = new Location('Dubai', 11, 38, 3.7);
 var cityLima = new Location('Lima', 2, 16, 4.6);
 
 console.log(citySeattle.maxCustomers);
-
+console.log(citySeattle.getCookiesPerHour());
 
 
 
