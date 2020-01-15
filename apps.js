@@ -229,17 +229,20 @@ Location.prototype.getRandomCustomer = function(min, max){
     for(var i = 0; i<hoursOpen.length; i++){
     var randomNumber =  Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1) + this.minCustomers);
     this.randomCustomers.push(randomNumber);
+    // console.log(this.randomCustomers, 'Hi brint'); 
     }
 }
 
 Location.prototype.getCookiesPerHour = function(){
     for(var i = 0; i < hoursOpen.length; i++){
-        var cookiesEachHour = Math.ceil(this.randomCustomers * this.averageCookies);
+        var cookiesEachHour = Math.ceil(this.randomCustomers[i] * this.averageCookies);
         this.cookiesSoldEachHour.push(cookiesEachHour);
+        // console.log(this.cookiesSoldEachHour, 'Hi Bri');
+        // console.log(this.randomCustomers[i], 'Hi Gus');
     }
 }
 Location.prototype.calculateTotalCookies = function(){
-    for(var i = 0; i < cookiesSoldEachHour.length; i++){
+    for(var i = 0; i < this.cookiesSoldEachHour.length; i++){
         this.totalCookies += this.cookiesSoldEachHour[i];
     }
 }
@@ -248,7 +251,6 @@ Location.prototype.render = function(){
     this.getRandomCustomer();
     this.getCookiesPerHour();
     this.calculateTotalCookies();
-
 }
 
 var citySeattle = new Location('Seattle,', 23, 65, 6.3);
@@ -256,8 +258,36 @@ var cityTokyo = new Location('Tokyo', 3, 24, 1.2);
 var cityDubai = new Location('Dubai', 11, 38, 3.7);
 var cityLima = new Location('Lima', 2, 16, 4.6);
 
-console.log(citySeattle.maxCustomers);
-console.log(citySeattle.getCookiesPerHour());
+//assigned allLocations to locations
+function TableBuilder(locations){
+    this.locations = locations;
+}
+// added buildRows function to object of TableBuilder
+TableBuilder.prototype.buildRows = function(){
+    //grabbed tableData table from HTML
+    var myTable = document.getElementById('tableData');
+    for(var i = 0; i < this.locations.length; i++){
+    //assigned locations.length[i] to variable place
+        var place = this.locations[i];
+        //calculated data for each place
+        place.render();
+        //create the table row for each place
+        var tableRow = document.createElement('tr');
+        myTable.appendChild(tableRow);
+        // created td element for table data and passed in each places cookies sold array
+        for(var j = 0; j < hoursOpen.length; j++){
+            var dataTable = document.createElement('td');
+            dataTable.textContent = place.cookiesSoldEachHour[j];
+            tableRow.appendChild(dataTable);
+        }
+}
+}
+// took locations from 256-259 and organized them into an array named allLocations
+//assigned all locations to TableBuilder and created variable bobTheBuilder
+var allLocations = [citySeattle, cityTokyo, cityDubai, cityLima];
+var bobTheBuilder = new TableBuilder(allLocations);
+
+bobTheBuilder.buildRows();
 
 
 
