@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+header{
+    background-image:url(https://github.com/codefellows/seattle-201d58/blob/master/class-08/assets/chinook.jpg?raw=true);
+    max-height: 200px;
+}
+main{
+    margin: 0 auto;
+    align-self: center;
+    text-align: center;
+    max-width: 960px;
+}
+
+nav {
+    height: 30%;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+}
+
+ul {
+    width: 100%;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    color: blue;
+  }
+ol{
+    color:white;
+}
+
+li {
+    float: left;
+    text-align: center;
+    font-size: 15px;
+    margin: 15px;
+    width: 10%;
+    float:center;
+    line-height: 5em;
+  }
+  p{
+      color:white;
+  }
+
+  #logo {
+      background-color: black;
+      height: 70px;
+      width: 200px;
+      text-align: center;
+     float: center;
+     color: white;
+  }
+
+  #picSmall{
+      display: block;
+      float:top;
+      width: 300px;
+      height: 375px;
+      margin: 10px;
+      text-align: center;
+      border: 0;
+      padding: 0;
+  }
+
+  p.textBox{
+      overflow: auto;
+      width:400px;
+      height: 200px;
+      float: center;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    color:white;
+  }
+
+  #fish {
+      /* float: right; */
+      margin: 0px;
+      padding: 10px;
+      text-align: center;
+      background-color: black;
+  }
+
+  #hero{
+      float:center;
+      padding-top: 15px;
+     
+  }
+  footer{
+      width: 100%;
+      height: 150px;
+      background-color: grey;
+      
+  }
+
+  button:hover{
+background-color: red;
+  }
