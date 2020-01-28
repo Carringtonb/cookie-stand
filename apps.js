@@ -49,8 +49,6 @@ var cityDubai = new Location('Dubai', 11, 38, 3.7);
 var cityLima = new Location('Lima', 2, 16, 4.6);
 var cityParis = new Location('Paris', 20, 38, 2.3);
 
-// var LocationNames = [citySeattle, cityTokyo, cityDubai, cityLima, cityParis]
-
 console.log(locations);
 
 //MAKE HEADER ===========================================
@@ -80,11 +78,10 @@ Location.prototype.makeLocations = function(){
     this.getCookiesPerHour();
     this.calculateTotalCookies();
 
-
     var locationColumn = document.createElement('tr');
     myTable.appendChild(locationColumn);
 
-    var cityData = document.createElement('td')
+    var cityData = document.createElement('th')
     cityData.textContent = this.name;
     locationColumn.appendChild(cityData);
 
@@ -92,7 +89,7 @@ Location.prototype.makeLocations = function(){
     for(var i = 0; i < hoursOpen.length; i++){
         //make a td
         var cookieData = document.createElement('td');
-        //gitve it context
+        //give it context
         cookieData.textContent = this.cookiesSoldEachHour[i];
         //append
         locationColumn.appendChild(cookieData);
@@ -130,16 +127,7 @@ var footerRow = document.createElement('tr');
     footerRow.appendChild(totalCell);
 }
 
-
-// CALL ALL FUNCTIONS ===============================
- 
- 
-
-
-
-
-
-
+// ================== Create Form
 
 var storeForm = document.getElementById('add-store');
 
@@ -157,6 +145,8 @@ function handleSubmit(event){
 var pueblo = new Location(location, minCustomers, maxCustomers, avgCustomers);
     renderAll();
 }
+
+// =============== Call all functions
 
 function renderAll(){
     var tableClear = document.getElementById('tableData');
